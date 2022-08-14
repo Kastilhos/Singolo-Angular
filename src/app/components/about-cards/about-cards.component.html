@@ -1,0 +1,10 @@
+<ng-container *ngFor="let card of aboutCards">
+    <div>
+        <img src={{card.picture}} alt="">
+        <h3>{{card.name}}</h3>
+        <p>{{card.description}}</p>
+        <div *ngFor="let ico of aboutCards.socials">
+            <a href="" target="_blank" rel="noopener noreferrer"><img src="ico" alt=""></a>
+        </div>
+    </div>
+</ng-container>

@@ -29,4 +29,5 @@ import { SliderComponent } from './components/slider/slider.component';
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

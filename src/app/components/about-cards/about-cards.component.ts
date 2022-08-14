@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { ABOUT_CARDS } from "src/app/about-cards";
 
 @Component({
     selector: "app-about-cards",
@@ -7,5 +8,5 @@ import { Component } from "@angular/core";
 })
 
 export class AboutCardsComponent {
-
+    aboutCards = ABOUT_CARDS;
 };

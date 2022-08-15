@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import {SERVICE_CARDS} from "src/app/service-cards"
 
 @Component({
     selector: 'app-service-cards',
@@ -7,5 +8,5 @@ import { Component } from "@angular/core";
 })
 
 export class ServiceCardsComponent {
-    
+    ServCards = SERVICE_CARDS;
 }

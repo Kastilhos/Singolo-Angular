@@ -10,6 +10,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { ServicesComponent } from './components/services/services.component';
 import { SliderComponent } from './components/slider/slider.component';
+import { ServiceCardsComponent } from "./components/service-cards/service-cards.component";
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { SliderComponent } from './components/slider/slider.component';
     PortfolioComponent,
     ServicesComponent,
     FooterComponent,
-    ContactComponent
+    ContactComponent,
+    ServiceCardsComponent
   ],
   imports: [
     BrowserModule,

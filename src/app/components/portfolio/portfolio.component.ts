@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import {PORT_CARDS} from "src/app/portfolio-cards";
 
 @Component({
     selector: "app-portfolio",
@@ -8,5 +7,5 @@ import {PORT_CARDS} from "src/app/portfolio-cards";
 })
 
 export class PortfolioComponent {
-    PortCards = PORT_CARDS;
+    
 };

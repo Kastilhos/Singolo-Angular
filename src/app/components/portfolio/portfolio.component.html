@@ -7,8 +7,6 @@
         <button type="button">Artwork</button>
     </div>
     <div>
-        <ng-container *ngFor="let card of PortCards">
-            <img src={{card.image}} alt={{card.alt}} id={{card.tag}}>
-        </ng-container>
+        <app-portfolio-imgs></app-portfolio-imgs>
     </div>
 </div>

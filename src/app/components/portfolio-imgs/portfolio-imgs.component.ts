@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import {PORT_CARDS} from "src/app/portfolio-cards";
+import {ART_CARDS} from "src/app/portfolio-cards";
 
 @Component({
     selector: 'app-portfolio-imgs',
@@ -8,5 +8,8 @@ import {PORT_CARDS} from "src/app/portfolio-cards";
 })
 
 export class PortfolioImgsComponent {
-    PortCards = PORT_CARDS;
+    // PortCards = PORT_CARDS;
+    // webDesign: boolean = true;
+    // artwork: boolean = true;
+    // graphDesign: boolean = true;
 };

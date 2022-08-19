@@ -1,31 +1,21 @@
-<!--TODO-->
-<div>My div</div>
-<!---->
 <div>
     <h2>Portfolio</h2>
     <div>
-        <button type="button" (click)="filter('all')">All</button>
-        <button type="button" (click)="filter('hideWeb')">Web Design</button>
-        <button type="button" (click)="filter('hideGraph')">Graphic Design</button>
-        <button type="button" (click)="filter('hideArt')">Artwork</button>
+        <button class="portfolio__button" [ngClass]="{'portfolio__button--selected': areAllShown}" type="button" (click)="filter('all')">All</button>
+        <button class="portfolio__button" [ngClass]="{'portfolio__button--selected': !areAllShown && !isPortHidden.hideWeb}" type="button" (click)="filter('hideWeb')">Web Design</button>
+        <button class="portfolio__button" [ngClass]="{'portfolio__button--selected': !areAllShown && !isPortHidden.hideGraph}" type="button" (click)="filter('hideGraph')">Graphic Design</button>
+        <button class="portfolio__button" [ngClass]="{'portfolio__button--selected': !areAllShown && !isPortHidden.hideArt}" type="button" (click)="filter('hideArt')">Artwork</button>
     </div>
     <div>
         <ng-container *ngFor="let card of artCards">
-            <img [hidden]="isPortHidden.hideArt" src={{card.image}} alt={{card.alt}} class={{card.tag}}>
+            <img [hidden]="isPortHidden.hideArt" [src]='card.image' [alt]='card.alt' [class]='card.tag'>
         </ng-container>
         <ng-container *ngFor="let card of webCards">
-            <img [hidden]="isPortHidden.hideWeb" src={{card.image}} alt={{card.alt}} class={{card.tag}}>
+            <img [hidden]="isPortHidden.hideWeb" [src]='card.image' [alt]='card.alt' [class]='card.tag'>
         </ng-container>
         <ng-container *ngFor="let card of graphCards">
-            <img [hidden]="isPortHidden.hideGraph" src={{card.image}} alt={{card.alt}} class={{card.tag}}>
+            <img [hidden]="isPortHidden.hideGraph" [src]='card.image' [alt]='card.alt' [class]='card.tag'>
         </ng-container>
     </div>
-    <!-- TODO -->
-    <ul>
-        <li>First Task</li>
-        <li>Second Task</li>
-        <li>Third</li>
-    </ul>
-    <!--  -->
 </div>
 

@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import {ART_CARDS} from "src/app/portfolio-cards";
+//import {ART_CARDS} from "src/app/portfolio-cards";
 
 @Component({
     selector: 'app-portfolio-imgs',

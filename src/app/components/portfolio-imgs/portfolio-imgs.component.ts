@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { PortfolioService } from "src/app/services/portfolio.service";
+import { PortfolioService } from "src/app/services/portfolio/portfolio.service";
 import { PortfolioCards } from "src/app/Interfaces/cards";
 
 @Component({

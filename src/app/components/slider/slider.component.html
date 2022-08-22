@@ -1,3 +1,14 @@
 <div>
-    <img src="./assets/Slide-1.jpg" alt="">
+    <div>
+        <img [src]="lastSlide.src" [alt]="lastSlide.description">
+    </div>
+    <ng-container *ngFor="let slide of slides">
+        <div>
+            <img [src]="slide.src" [alt]="slide.description">
+        </div>
+    </ng-container>
+    <div>
+        <img [src]="firstSlide.src" [alt]="firstSlide.description">
+    </div>
+
 </div>

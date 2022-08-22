@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { PortfolioCards } from '../Interfaces/cards';
-import { ART_CARDS } from '../portfolio-cards'
-import { GRAPH_CARDS } from '../portfolio-cards'
-import { WEB_CARDS } from '../portfolio-cards'
+import { PortfolioCards } from '../../Interfaces/cards';
+import { ART_CARDS } from '../../portfolio-cards'
+import { GRAPH_CARDS } from '../../portfolio-cards'
+import { WEB_CARDS } from '../../portfolio-cards'
 
 @Injectable({
   providedIn: 'root'

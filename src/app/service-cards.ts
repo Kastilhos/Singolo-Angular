@@ -1,4 +1,4 @@
-import { ServiceCards } from "./cards";
+import { ServiceCards } from "./Interfaces/cards";
 
 export const SERVICE_CARDS: ServiceCards[] = [
     {

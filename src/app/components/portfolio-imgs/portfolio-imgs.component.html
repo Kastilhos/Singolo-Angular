@@ -1,0 +1,11 @@
+<div>
+    <ng-container *ngFor="let card of art">
+        <img [hidden]="isPortHidden.hideArt" [src]='card.image' [alt]='card.alt' [class]='card.tag'>
+    </ng-container>
+    <ng-container *ngFor="let card of web">
+        <img [hidden]="isPortHidden.hideWeb" [src]='card.image' [alt]='card.alt' [class]='card.tag'>
+    </ng-container>
+    <ng-container *ngFor="let card of graph">
+        <img [hidden]="isPortHidden.hideGraph" [src]='card.image' [alt]='card.alt' [class]='card.tag'>
+    </ng-container>
+</div>

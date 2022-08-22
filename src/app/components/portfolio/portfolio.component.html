@@ -1,7 +1,17 @@
 <div>
     <h2>Portfolio</h2>
-    <button type="button">All</button>
-    <button type="button">Web Design</button>
-    <button type="button">Graphic Design</button>
-    <button type="button">Artwork</button>
+    <div>
+        <button class="portfolio__button" [ngClass]="{'portfolio__button--selected': areAllShown}" type="button"
+            (click)="filter('all')">All</button>
+        <button class="portfolio__button"
+            [ngClass]="{'portfolio__button--selected': !areAllShown && !isPortHidden.hideWeb}" type="button"
+            (click)="filter('hideWeb')">Web Design</button>
+        <button class="portfolio__button"
+            [ngClass]="{'portfolio__button--selected': !areAllShown && !isPortHidden.hideGraph}" type="button"
+            (click)="filter('hideGraph')">Graphic Design</button>
+        <button class="portfolio__button"
+            [ngClass]="{'portfolio__button--selected': !areAllShown && !isPortHidden.hideArt}" type="button"
+            (click)="filter('hideArt')">Artwork</button>
+    </div>
+    <app-portfolio-imgs [isPortHidden]="isPortHidden"></app-portfolio-imgs>
 </div>

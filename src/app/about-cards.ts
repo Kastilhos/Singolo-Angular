@@ -1,4 +1,4 @@
-import { AboutCards } from "./models/cards";
+import { AboutCards } from "./Interfaces/cards";
 
 export const ABOUT_CARDS: AboutCards[] = [
     {

@@ -1,4 +1,4 @@
-import { PortfolioCards } from "./cards";
+import { PortfolioCards } from "./Interfaces/cards";
 
 export const ART_CARDS: PortfolioCards[] = [
     {

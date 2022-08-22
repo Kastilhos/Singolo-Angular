@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
-import { ART_CARDS } from "src/app/portfolio-cards";
-import { WEB_CARDS } from "src/app/portfolio-cards";
-import { GRAPH_CARDS } from "src/app/portfolio-cards";
+// import { ART_CARDS } from "src/app/portfolio-cards";
+// import { WEB_CARDS } from "src/app/portfolio-cards";
+// import { GRAPH_CARDS } from "src/app/portfolio-cards";
 
 @Component({
     selector: "app-portfolio",
@@ -10,9 +10,9 @@ import { GRAPH_CARDS } from "src/app/portfolio-cards";
 })
 
 export class PortfolioComponent {
-    artCards = ART_CARDS;
-    webCards = WEB_CARDS;
-    graphCards = GRAPH_CARDS;
+    // artCards = ART_CARDS;
+    // webCards = WEB_CARDS;
+    // graphCards = GRAPH_CARDS;
 
     isPortHidden = {
         hideArt: false,

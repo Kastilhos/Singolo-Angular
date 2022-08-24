@@ -24,8 +24,17 @@ export class SliderComponent {
             .subscribe(slide => this.slides = slide)
     }
 
-    
-    firstSlide = this.slides[0]; //.at(0);
-    lastSlide = this.slides[this.slides.length -1];  //.at(-1);
+    slideCounter = 1;
+    currentSlide = "-100%"
 
+    sliderMotion(arg: string): void {
+        arg == "next" ? this.slideCounter++ :
+        this.slideCounter--;
+        this.getMargin();
+        console.log(this.currentSlide)
+    }
+    
+    getMargin(): void {
+        this.currentSlide = `-${this.slideCounter * 100}%`
+    }
 };

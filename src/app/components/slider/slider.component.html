@@ -1,14 +1,17 @@
 <div>
-    <div>
-        <img [src]="lastSlide.src" [alt]="lastSlide.description">
-    </div>
-    <ng-container *ngFor="let slide of slides">
+    <div class="container" [style]="{'margin-left': currentSlide}">
         <div>
-            <img [src]="slide.src" [alt]="slide.description">
+            <img [src]="slides[slides.length -1].src" [alt]="slides[slides.length -1].description">
         </div>
-    </ng-container>
-    <div>
-        <img [src]="firstSlide.src" [alt]="firstSlide.description">
+        <ng-container *ngFor="let slide of slides">
+            <div>
+                <img [src]="slide.src" [alt]="slide.description">
+            </div>
+        </ng-container>
+        <div>
+            <img [src]="slides[0].src" [alt]="slides[0].description">
+        </div>
     </div>
-
+    <button (onClick)="sliderMotion('next')" type="button"><img src="/assets/arrow-left.svg" alt=""></button>
+    <button (onClick)="sliderMotion('previous')"  type="button"><img src="/assets/arrow-right.svg" alt=""></button>
 </div>

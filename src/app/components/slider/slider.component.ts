@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Slides } from "src/app/Interfaces/slides";
 import { SliderService } from "src/app/services/slider/slider.service";
 
@@ -9,12 +9,16 @@ import { SliderService } from "src/app/services/slider/slider.service";
 
 })
 
-export class SliderComponent {
-
+export class SliderComponent implements OnInit{
+    
     constructor (private sliderService: SliderService) {}
+    
+    @ViewChild("sliderId") slider!: ElementRef;
+    sliderElement!: HTMLElement;
 
     ngOnInit() {
         this.getSlides();
+        this.sliderElement = this.slider.nativeElement;
     }
 
     slides: Slides[] = [];
@@ -25,16 +29,57 @@ export class SliderComponent {
     }
 
     slideCounter = 1;
-    currentSlide = "-100%"
+    slideWidth = -100
 
-    sliderMotion(arg: string): void {
-        arg == "next" ? this.slideCounter++ :
+    sliderPrevious() {
         this.slideCounter--;
-        this.getMargin();
-        console.log(this.currentSlide)
+        this.sliderElement.style.marginLeft = `${this.slideCounter * this.slideWidth}%`
+        
+        if (this.slideCounter == 0) {
+            this.slideCounter = this.slides.length;
+            this.sliderElement.style.transition = "0";
+            this.sliderElement.style.marginLeft = `${this.slideCounter * this.slideWidth}%`
+            this.sliderElement.style.transition = ".75s";
+        }
     }
-    
-    getMargin(): void {
-        this.currentSlide = `-${this.slideCounter * 100}%`
+
+    sliderNext() {
+        console.log("why god")
+        this.slideCounter++;
+        this.sliderElement.style.marginLeft = `${this.slideCounter * this.slideWidth}%`
+        
+        if (this.slideCounter == this.slides.length + 1) {
+            this.slideCounter = 1;
+            this.sliderElement.style.transition = "0";
+            this.sliderElement.style.marginLeft = `0px`
+            this.sliderElement.style.transition = ".75s";
+        }
     }
+
+    // sliderMotion(arg: string): void {
+    //     console.log("why god, why")
+    //     if (arg == "next") {
+    //         this.slideCounter++;
+    //         this.sliderElement.style.marginLeft = `${this.slideCounter * this.slideWidth}%`
+            
+    //         if (this.slideCounter == this.slides.length + 1) {
+    //             this.slideCounter = 1;
+    //             this.sliderElement.style.transition = "0";
+    //             this.sliderElement.style.marginLeft = `0px`
+    //             this.sliderElement.style.transition = ".75s";
+    //         }
+    //     }
+
+    //     if (arg == "previous")  {
+    //         this.slideCounter--;
+    //         this.sliderElement.style.marginLeft = `${this.slideCounter * this.slideWidth}%`
+            
+    //         if (this.slideCounter == 0) {
+    //             this.slideCounter = this.slides.length;
+    //             this.sliderElement.style.transition = "0";
+    //             this.sliderElement.style.marginLeft = `${this.slideCounter * this.slideWidth}%`
+    //             this.sliderElement.style.transition = ".75s";
+    //         }
+    //     }
+    // }
 };

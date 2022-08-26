@@ -1,5 +1,5 @@
 <div>
-    <div class="container" [style]="{'margin-left': currentSlide}">
+    <div class="container" #sliderId>
         <div>
             <img [src]="slides[slides.length -1].src" [alt]="slides[slides.length -1].description">
         </div>
@@ -12,6 +12,10 @@
             <img [src]="slides[0].src" [alt]="slides[0].description">
         </div>
     </div>
-    <button (onClick)="sliderMotion('next')" type="button"><img src="/assets/arrow-left.svg" alt=""></button>
-    <button (onClick)="sliderMotion('previous')"  type="button"><img src="/assets/arrow-right.svg" alt=""></button>
+    <button (onClick)="sliderNext()" type="button"></button>
+    <button (onClick)="sliderPrevious()"  type="button"></button>
 </div>
+<!-- [style]="{marginLeft: '-100%'}" 
+<img src="/assets/arrow-left.svg" alt="">
+<img src="/assets/arrow-right.svg" alt="">
+-->

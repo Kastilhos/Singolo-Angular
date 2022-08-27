@@ -9,16 +9,22 @@ import { SliderService } from "src/app/services/slider/slider.service";
 
 })
 
-export class SliderComponent implements OnInit{
+export class SliderComponent implements OnInit, AfterViewInit {
     
     constructor (private sliderService: SliderService) {}
-    
+
     @ViewChild("sliderId") slider!: ElementRef;
+
     sliderElement!: HTMLElement;
+    
+    ngAfterViewInit() {
+        this.sliderElement = this.slider.nativeElement;
+    }
+    
 
     ngOnInit() {
         this.getSlides();
-        this.sliderElement = this.slider.nativeElement;
+        this.startUp;
     }
 
     slides: Slides[] = [];
@@ -31,55 +37,45 @@ export class SliderComponent implements OnInit{
     slideCounter = 1;
     slideWidth = -100
 
+    startUp = setInterval(() => this.sliderNext(), 4000);
+
     sliderPrevious() {
+        this.sliderElement.style.transition = ".5s";
         this.slideCounter--;
         this.sliderElement.style.marginLeft = `${this.slideCounter * this.slideWidth}%`
-        
+
         if (this.slideCounter == 0) {
-            this.slideCounter = this.slides.length;
-            this.sliderElement.style.transition = "0";
-            this.sliderElement.style.marginLeft = `${this.slideCounter * this.slideWidth}%`
-            this.sliderElement.style.transition = ".75s";
+            setTimeout(() => {
+                this.sliderPreviousReset()
+            },500)
         }
+        clearInterval(this.startUp)
+        this.startUp = setInterval(() => this.sliderNext(), 4000);
+    }
+
+    sliderPreviousReset() {
+        this.sliderElement.style.transition = "0s";
+        this.slideCounter = 2;
+        this.sliderElement.style.marginLeft = `${this.slideCounter * this.slideWidth}%`
     }
 
     sliderNext() {
-        console.log("why god")
+        this.sliderElement.style.transition = ".5s";
         this.slideCounter++;
         this.sliderElement.style.marginLeft = `${this.slideCounter * this.slideWidth}%`
-        
+
         if (this.slideCounter == this.slides.length + 1) {
-            this.slideCounter = 1;
-            this.sliderElement.style.transition = "0";
-            this.sliderElement.style.marginLeft = `0px`
-            this.sliderElement.style.transition = ".75s";
+            setTimeout(() => {
+                this.sliderNextReset()
+            },500)
         }
+        clearInterval(this.startUp)
+        this.startUp = setInterval(() => this.sliderNext(), 4000);
     }
 
-    // sliderMotion(arg: string): void {
-    //     console.log("why god, why")
-    //     if (arg == "next") {
-    //         this.slideCounter++;
-    //         this.sliderElement.style.marginLeft = `${this.slideCounter * this.slideWidth}%`
-            
-    //         if (this.slideCounter == this.slides.length + 1) {
-    //             this.slideCounter = 1;
-    //             this.sliderElement.style.transition = "0";
-    //             this.sliderElement.style.marginLeft = `0px`
-    //             this.sliderElement.style.transition = ".75s";
-    //         }
-    //     }
-
-    //     if (arg == "previous")  {
-    //         this.slideCounter--;
-    //         this.sliderElement.style.marginLeft = `${this.slideCounter * this.slideWidth}%`
-            
-    //         if (this.slideCounter == 0) {
-    //             this.slideCounter = this.slides.length;
-    //             this.sliderElement.style.transition = "0";
-    //             this.sliderElement.style.marginLeft = `${this.slideCounter * this.slideWidth}%`
-    //             this.sliderElement.style.transition = ".75s";
-    //         }
-    //     }
-    // }
+    sliderNextReset() {
+        this.sliderElement.style.transition = "0s";
+        this.slideCounter = 1;
+        this.sliderElement.style.marginLeft = `${this.slideCounter * this.slideWidth}%`
+    }
 };

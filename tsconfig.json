@@ -30,3 +30,4 @@
     "strictTemplates": true
   }
 }
+// "strictPropertyInitialization”: false,

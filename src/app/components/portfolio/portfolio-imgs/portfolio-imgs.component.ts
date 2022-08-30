@@ -8,7 +8,7 @@ import { PortfolioCards } from "src/app/Interfaces/cards";
     styleUrls: ['./portfolio-imgs.component.scss']
 })
 
-export class PortfolioImgsComponent {
+export class PortfolioImgsComponent implements OnInit {
 
     constructor (private portfolioService: PortfolioService) {}
 

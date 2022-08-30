@@ -12,11 +12,6 @@ export class PortfolioService {
 
   constructor() { }
 
-  // artCards = of(ART_CARDS);
-  // graphCards = of(GRAPH_CARDS);
-  // webCards = of(WEB_CARDS);
-
-
   getArt(): Observable<PortfolioCards[]> {
     const artCards = of(ART_CARDS);
     return artCards;
@@ -31,6 +26,5 @@ export class PortfolioService {
     const graphCards = of(GRAPH_CARDS);
     return graphCards;
   };
-
 
 }

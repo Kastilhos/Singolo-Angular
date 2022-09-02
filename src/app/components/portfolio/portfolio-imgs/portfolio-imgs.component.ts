@@ -10,7 +10,7 @@ import { PortfolioCards } from "src/app/Interfaces/cards";
 
 export class PortfolioImgsComponent implements OnInit {
 
-    constructor (private portfolioService: PortfolioService) {}
+    constructor(private portfolioService: PortfolioService) { }
 
     ngOnInit() {
         this.getArt();
@@ -27,7 +27,7 @@ export class PortfolioImgsComponent implements OnInit {
         hideWeb: false,
         hideGraph: false
     };
-    
+
     getArt(): void {
         this.portfolioService.getArt()
             .subscribe(art => this.art = art)
@@ -40,5 +40,11 @@ export class PortfolioImgsComponent implements OnInit {
         this.portfolioService.getGraph()
             .subscribe(graph => this.graph = graph)
     }
+
+    selectedImg?: number;
+
+    select(a: number): void { 
+        this.selectedImg = a;
+    };
 
 };

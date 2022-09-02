@@ -27,4 +27,20 @@ export class PortfolioService {
     return graphCards;
   };
 
-}
+  totalImgs() {
+
+    let allImgs: PortfolioCards[] = [];
+
+    this.getArt()
+      .subscribe(art => allImgs = [...allImgs,...art])
+
+    this.getWeb()
+      .subscribe(web => allImgs = [...allImgs,...web])
+
+    this.getGraph()
+      .subscribe(graph => allImgs = [...allImgs,...graph])
+
+    return allImgs//.sort((a,b) => a.order - b.order);
+  }
+
+};

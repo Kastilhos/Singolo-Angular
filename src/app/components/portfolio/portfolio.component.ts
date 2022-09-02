@@ -19,7 +19,7 @@ export class PortfolioComponent {
     filter(arg: "hideArt" | "hideWeb" | "hideGraph" | "all"): void {
 
         if (arg == 'all') {
-            this.areAllShown = true;;
+            this.areAllShown = true;
             let tag: "hideArt" | "hideWeb" | "hideGraph";
             for (tag in this.isPortHidden) {
                 this.isPortHidden[tag] = false;

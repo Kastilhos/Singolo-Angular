@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
-
+import { PortfolioCards } from 'src/app/Interfaces/cards';
 
 @Component({
   selector: 'app-portfolio-zoom',
@@ -15,20 +15,22 @@ export class PortfolioZoomComponent implements OnInit {
   ngOnInit(): void {
   };
 
-  totalImg() {
-    this.portfolioService.totalImgs();
-  };
-
+  @Input() art?: PortfolioCards[];
+  @Input() web?: PortfolioCards[]
+  @Input() graph?: PortfolioCards[];
   @Input() selectedImg?: number;
-
   @Input() isPortHidden = {
     hideArt: false,
     hideWeb: false,
     hideGraph: false
   };
 
+
+
   next() {};
 
   previous() {};
+
+  close () {};
 
 }

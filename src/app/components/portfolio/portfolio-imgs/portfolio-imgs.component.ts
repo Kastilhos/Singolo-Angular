@@ -13,9 +13,10 @@ export class PortfolioImgsComponent implements OnInit {
     constructor(private portfolioService: PortfolioService) { }
 
     ngOnInit() {
-        this.getArt();
-        this.getGraph();
-        this.getWeb();
+        // this.getArt();
+        // this.getGraph();
+        // this.getWeb();
+        this.totalImgs();
     }
 
     art?: PortfolioCards[];
@@ -28,22 +29,50 @@ export class PortfolioImgsComponent implements OnInit {
         hideGraph: false
     };
 
-    getArt(): void {
-        this.portfolioService.getArt()
-            .subscribe(art => this.art = art)
-    }
-    getWeb(): void {
-        this.portfolioService.getWeb()
-            .subscribe(web => this.web = web)
-    }
-    getGraph(): void {
-        this.portfolioService.getGraph()
-            .subscribe(graph => this.graph = graph)
-    }
+    // getArt(): void {
+    //     this.portfolioService.getArt()
+    //         .subscribe(art => this.art = art)
+    // }
+    // getWeb(): void {
+    //     this.portfolioService.getWeb()
+    //         .subscribe(web => this.web = web)
+    // }
+    // getGraph(): void {
+    //     this.portfolioService.getGraph()
+    //         .subscribe(graph => this.graph = graph)
+    // }
 
-    selectedImg?: number;
+    allImgs: PortfolioCards[] = [];
 
-    select(a: number): void { 
+    totalImgs() {
+
+        this.allImgs = [];
+        
+        if (this.isPortHidden.hideArt == false) {
+            this.portfolioService.getArt()
+                .subscribe(art => this.allImgs = [...this.allImgs, ...art])
+        }
+        
+        if (this.isPortHidden.hideWeb == false) {
+            this.portfolioService.getWeb()
+                .subscribe(web => this.allImgs = [...this.allImgs, ...web])
+        }
+        
+        if (this.isPortHidden.hideGraph == false) {
+            this.portfolioService.getGraph()
+                .subscribe(graph => this.allImgs = [...this.allImgs, ...graph])
+        }
+
+        return this.allImgs.sort((a, b) => a.order - b.order);
+
+    };
+
+    selectedImg?: number; /*{
+        order: number
+        
+    };*/
+
+    select(a: number): void {
         this.selectedImg = a;
     };
 

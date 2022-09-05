@@ -1,16 +1,18 @@
 <div>
-    <ng-container *ngFor="let card of art">
-        <img style="cursor: pointer;" (click)="select(card.order)" [hidden]="isPortHidden.hideArt" [src]='card.image' [alt]='card.alt' [class]='card.tag'>
+    <ng-container *ngFor="let card of allImgs">
+        <img style="cursor: pointer;" (click)="select(card.order)" [src]='card.image' [alt]='card.alt' [class]='card.tag'>
     </ng-container>
-    <ng-container *ngFor="let card of web">
+    <!-- <ng-container *ngFor="let card of web">
         <img style="cursor: pointer;" (click)="select(card.order)" [hidden]="isPortHidden.hideWeb" [src]='card.image' [alt]='card.alt' [class]='card.tag'>
     </ng-container>
     <ng-container *ngFor="let card of graph">
         <img style="cursor: pointer;" (click)="select(card.order)" [hidden]="isPortHidden.hideGraph" [src]='card.image' [alt]='card.alt' [class]='card.tag'>
-    </ng-container>
-    <!-- <button (click)="totalImg()">fuck</button> -->
+    </ng-container> -->
     <app-portfolio-zoom
     [isPortHidden]="isPortHidden"
-    [selectedImg]="selectedImg">
+    [selectedImg]="selectedImg"
+    [art]="art"
+    [web]="web"
+    [graph]="graph">
     </app-portfolio-zoom>
 </div>

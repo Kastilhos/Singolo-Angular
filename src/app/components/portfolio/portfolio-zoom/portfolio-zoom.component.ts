@@ -10,27 +10,39 @@ import { PortfolioCards } from 'src/app/Interfaces/cards';
 
 export class PortfolioZoomComponent implements OnInit {
 
-  constructor(private portfolioService: PortfolioService) {}
+  constructor(private portfolioService: PortfolioService) { }
 
   ngOnInit(): void {
   };
 
-  @Input() art?: PortfolioCards[];
-  @Input() web?: PortfolioCards[]
-  @Input() graph?: PortfolioCards[];
-  @Input() selectedImg?: number;
-  @Input() isPortHidden = {
-    hideArt: false,
-    hideWeb: false,
-    hideGraph: false
+  // @Input() art?: PortfolioCards[];
+  // @Input() web?: PortfolioCards[]
+  // @Input() graph?: PortfolioCards[];
+  @Input() allImgs?: PortfolioCards[];
+  // @Input() selectedImg?: PortfolioCards;
+  // @Input() isPortHidden = {
+  //   hideArt: false,
+  //   hideWeb: false,
+  //   hideGraph: false
+  // };
+
+  selectedImg!: PortfolioCards;
+  selectedImgSrc?: number;
+  imgShown = false;
+
+  select(a: number): void {
+    console.log(this.allImgs![a])
+    // this.selectedImg = this.allImgs![a];
+    // this.selectedImgSrc = a;
+    // this.imgShown = true;
   };
 
+  next() { };
 
+  previous() { };
 
-  next() {};
-
-  previous() {};
-
-  close () {};
+  close(): void {
+    this.imgShown = false;
+   };
 
 }

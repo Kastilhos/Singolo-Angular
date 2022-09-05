@@ -48,6 +48,7 @@ export class PortfolioComponent {
         }
 
         this.checkAll();
+        this.portImgs?.totalImgs();
 
     }
     checkAll(): void {

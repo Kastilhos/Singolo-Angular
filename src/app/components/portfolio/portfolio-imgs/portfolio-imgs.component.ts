@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, ViewChild, AfterViewInit } from "@angular/core";
 import { PortfolioService } from "src/app/services/portfolio/portfolio.service";
 import { PortfolioCards } from "src/app/Interfaces/cards";
+import { PortfolioZoomComponent } from "../portfolio-zoom/portfolio-zoom.component";
 
 @Component({
     selector: 'app-portfolio-imgs',
@@ -17,6 +18,12 @@ export class PortfolioImgsComponent implements OnInit {
         // this.getGraph();
         // this.getWeb();
         this.totalImgs();
+    }
+
+    @ViewChild(PortfolioZoomComponent) portZoom?:PortfolioZoomComponent;
+
+    ngAfterViewInit() {
+        this.portZoom?.select(1)
     }
 
     art?: PortfolioCards[];
@@ -67,13 +74,13 @@ export class PortfolioImgsComponent implements OnInit {
 
     };
 
-    selectedImg?: number; /*{
+    /*selectedImg?: PortfolioCards; {
         order: number
         
     };*/
 
     select(a: number): void {
-        this.selectedImg = a;
+       this.portZoom?.select(a);
     };
 
 };

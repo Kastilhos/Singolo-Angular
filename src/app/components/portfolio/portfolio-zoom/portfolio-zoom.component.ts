@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, OutputDecorator, EventEmitter } from '@angular/core';
 import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
 import { PortfolioCards } from 'src/app/Interfaces/cards';
 
@@ -15,34 +15,36 @@ export class PortfolioZoomComponent implements OnInit {
   ngOnInit(): void {
   };
 
-  // @Input() art?: PortfolioCards[];
-  // @Input() web?: PortfolioCards[]
-  // @Input() graph?: PortfolioCards[];
-  @Input() allImgs?: PortfolioCards[];
-  // @Input() selectedImg?: PortfolioCards;
-  // @Input() isPortHidden = {
-  //   hideArt: false,
-  //   hideWeb: false,
-  //   hideGraph: false
-  // };
+  @Output() closeEvent = new EventEmitter<boolean>();
+  @Output() nextEvent = new EventEmitter<number>();
+  @Output() previousEvent = new EventEmitter<number>();
 
-  selectedImg!: PortfolioCards;
-  selectedImgSrc?: number;
-  imgShown = false;
+  @Input() allImgs!: PortfolioCards[];
+  @Input() selectedImgIndex!: number;
+  @Input() imgShown!: boolean;
 
-  select(a: number): void {
-    console.log(this.allImgs![a])
-    // this.selectedImg = this.allImgs![a];
-    // this.selectedImgSrc = a;
-    // this.imgShown = true;
+  next() {
+    return this.selectedImgIndex < this.allImgs.length - 1
+      ? ++this.selectedImgIndex
+      : this.selectedImgIndex;
+  }
+
+  previous() {
+    return this.selectedImgIndex > 0
+      ? --this.selectedImgIndex
+      : this.selectedImgIndex;
+  }
+
+  nextEmitter(): void {
+    this.nextEvent.emit(this.next());
   };
 
-  next() { };
+  previousEmitter(): void {
+    this.previousEvent.emit(this.previous());
+  };
 
-  previous() { };
-
-  close(): void {
-    this.imgShown = false;
-   };
+  closeEmitter(): void {
+    this.closeEvent.emit(false);
+  };
 
 }

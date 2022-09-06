@@ -1,7 +1,6 @@
-import { Component, Input, OnInit, ViewChild, AfterViewInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { PortfolioService } from "src/app/services/portfolio/portfolio.service";
 import { PortfolioCards } from "src/app/Interfaces/cards";
-import { PortfolioZoomComponent } from "../portfolio-zoom/portfolio-zoom.component";
 
 @Component({
     selector: 'app-portfolio-imgs',
@@ -14,21 +13,8 @@ export class PortfolioImgsComponent implements OnInit {
     constructor(private portfolioService: PortfolioService) { }
 
     ngOnInit() {
-        // this.getArt();
-        // this.getGraph();
-        // this.getWeb();
         this.totalImgs();
     }
-
-    @ViewChild(PortfolioZoomComponent) portZoom?:PortfolioZoomComponent;
-
-    ngAfterViewInit() {
-        this.portZoom?.select(1)
-    }
-
-    art?: PortfolioCards[];
-    web?: PortfolioCards[];
-    graph?: PortfolioCards[];
 
     @Input() isPortHidden = {
         hideArt: false,
@@ -36,35 +22,22 @@ export class PortfolioImgsComponent implements OnInit {
         hideGraph: false
     };
 
-    // getArt(): void {
-    //     this.portfolioService.getArt()
-    //         .subscribe(art => this.art = art)
-    // }
-    // getWeb(): void {
-    //     this.portfolioService.getWeb()
-    //         .subscribe(web => this.web = web)
-    // }
-    // getGraph(): void {
-    //     this.portfolioService.getGraph()
-    //         .subscribe(graph => this.graph = graph)
-    // }
-
     allImgs: PortfolioCards[] = [];
 
     totalImgs() {
 
         this.allImgs = [];
-        
+
         if (this.isPortHidden.hideArt == false) {
             this.portfolioService.getArt()
                 .subscribe(art => this.allImgs = [...this.allImgs, ...art])
         }
-        
+
         if (this.isPortHidden.hideWeb == false) {
             this.portfolioService.getWeb()
                 .subscribe(web => this.allImgs = [...this.allImgs, ...web])
         }
-        
+
         if (this.isPortHidden.hideGraph == false) {
             this.portfolioService.getGraph()
                 .subscribe(graph => this.allImgs = [...this.allImgs, ...graph])
@@ -74,13 +47,24 @@ export class PortfolioImgsComponent implements OnInit {
 
     };
 
-    /*selectedImg?: PortfolioCards; {
-        order: number
-        
-    };*/
+    selectedImgIndex: number = 0
+    imgShown = false;
 
     select(a: number): void {
-       this.portZoom?.select(a);
+        this.selectedImgIndex = a;
+        this.imgShown = true;
     };
+
+    closeReceptor(close: boolean) {
+        this.imgShown = close;
+    }
+
+    nextReceptor(next: number) {
+        this.selectedImgIndex = next;
+    }
+
+    previousReceptor(previous: number) {
+        this.selectedImgIndex = previous;
+    }
 
 };

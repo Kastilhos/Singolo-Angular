@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { PortfolioCards } from '../../Interfaces/cards';
-import { ART_CARDS } from '../../portfolio-cards'
-import { GRAPH_CARDS } from '../../portfolio-cards'
-import { WEB_CARDS } from '../../portfolio-cards'
+import { ART_CARDS } from '../../portfolio-cards';
+import { GRAPH_CARDS } from '../../portfolio-cards';
+import { WEB_CARDS } from '../../portfolio-cards';
 
 @Injectable({
   providedIn: 'root'
@@ -13,20 +13,15 @@ export class PortfolioService {
   constructor() { }
 
   getArt(): Observable<PortfolioCards[]> {
-    const artCards = of(ART_CARDS);
-    return artCards;
+    return of(ART_CARDS);
   };
 
   getWeb(): Observable<PortfolioCards[]> {
-    const webCards = of(WEB_CARDS);
-    return webCards;
+    return of(WEB_CARDS);
   };
 
   getGraph(): Observable<PortfolioCards[]> {
-    const graphCards = of(GRAPH_CARDS);
-    return graphCards;
+    return of(GRAPH_CARDS);
   };
-
-  
 
 };

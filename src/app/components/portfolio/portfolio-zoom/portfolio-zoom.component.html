@@ -1,3 +1,6 @@
 <div>
-    <img [hidden]="imgShown" [src]="selectedImg.image" alt="">
+    <img [src]="allImgs[selectedImgIndex].image" alt="">
 </div>
+<button type="button" (click)="closeEmitter()">close</button>
+<button type="button" (click)="previousEmitter()">Previous</button>
+<button type="button" (click)="nextEmitter()">Next</button>

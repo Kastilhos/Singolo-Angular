@@ -1,22 +1,9 @@
 <div>
     <ng-container *ngFor="let card of allImgs; let i=index">
-        <img style="cursor: pointer;" (click)="select(i)" [id]="i" [src]='card.image' [alt]='card.alt' [class]='card.tag'>
+        <img style="cursor: pointer;" (click)="select(i)" [src]='card.image' [alt]='card.alt' [class]='card.tag'>
     </ng-container>
-    <!-- <ng-container *ngFor="let card of web">
-        <img style="cursor: pointer;" (click)="select(card.order)" [hidden]="isPortHidden.hideWeb" [src]='card.image' [alt]='card.alt' [class]='card.tag'>
-    </ng-container>
-    <ng-container *ngFor="let card of graph">
-        <img style="cursor: pointer;" (click)="select(card.order)" [hidden]="isPortHidden.hideGraph" [src]='card.image' [alt]='card.alt' [class]='card.tag'>
-    </ng-container> -->
-    <app-portfolio-zoom
-
-    >
-    <!--    
-    [selectedImg]="selectedImg"
-    [isPortHidden]="isPortHidden"
-    [art]="art"
-    [web]="web"
-    [graph]="graph"
-    -->
+    <app-portfolio-zoom *ngIf="imgShown" [allImgs]="allImgs" [selectedImgIndex]="selectedImgIndex" [imgShown]="imgShown"
+        (closeEvent)="closeReceptor($event)" (nextEvent)="nextReceptor($event)"
+        (previousEvent)="previousReceptor($event)">
     </app-portfolio-zoom>
 </div>

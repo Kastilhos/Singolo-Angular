@@ -1,6 +1,5 @@
 import { Component, ViewChild, AfterViewInit } from "@angular/core";
 import { PortfolioImgsComponent } from "./portfolio-imgs/portfolio-imgs.component";
-import { PortfolioZoomComponent } from "./portfolio-zoom/portfolio-zoom.component";
 
 @Component({
     selector: "app-portfolio",
@@ -10,7 +9,7 @@ import { PortfolioZoomComponent } from "./portfolio-zoom/portfolio-zoom.componen
 
 export class PortfolioComponent {
 
-    @ViewChild(PortfolioImgsComponent) portImgs?:PortfolioImgsComponent;
+    @ViewChild(PortfolioImgsComponent) portImgs?: PortfolioImgsComponent;
 
     ngAfterViewInit() {
         this.portImgs?.totalImgs();

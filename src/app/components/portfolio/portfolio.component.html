@@ -13,7 +13,6 @@
             [ngClass]="{'portfolio__button--selected': !areAllShown && !isPortHidden.hideArt}" type="button"
             (click)="filter('hideArt')">Artwork</button>
     </div>
-    <app-portfolio-imgs
-    [isPortHidden]="isPortHidden">
+    <app-portfolio-imgs [isPortHidden]="isPortHidden">
     </app-portfolio-imgs>
 </div>
